@@ -1,0 +1,43 @@
+---
+title: "hw2"
+output: html_document
+date: "2022-10-06"
+---
+
+Set up:
+```{r setup, echo = FALSE}
+library(tidymodels)
+library(tidyverse)
+abalone <- read_csv("abalone.csv")
+abalone
+```
+
+
+Question 1:
+```{r cars}
+#Your goal is to predict abalone age, which is calculated as the number of rings #plus 1.5. Notice there currently is no age variable in the data set. Add age to #the data set.
+
+#Assess and describe the distribution of age.
+
+ages <- abalone %>% 
+  mutate(age = rings + 1.5)
+hist(ages$age)
+```
+
+
+include explanation here
+
+Question 2
+
+
+```{r pressure, echo=FALSE}
+#Split the abalone data into a training set and a testing set. Use stratified #sampling. You should decide on appropriate percentages for splitting the data.
+
+#Remember that you’ll need to set a seed at the beginning of the document to #reproduce your results.
+
+set.seed(1500)
+train = abalone[1:3000,]  
+test = abalone[3001:4177]  
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
