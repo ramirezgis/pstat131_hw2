@@ -28,16 +28,67 @@ hist(ages$age)
 include explanation here
 
 Question 2
-
-
-```{r pressure, echo=FALSE}
+```{r question2}
 #Split the abalone data into a training set and a testing set. Use stratified #sampling. You should decide on appropriate percentages for splitting the data.
 
 #Remember that you’ll need to set a seed at the beginning of the document to #reproduce your results.
 
 set.seed(1500)
-train = abalone[1:3000,]  
-test = abalone[3001:4177]  
+
+abalone_split <- initial_split(ages, prop = 0.80, 
+                               strata = age)
+
+train = training(abalone_split)
+test = testing(abalone_split)
+
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+```{r question3}
+#Using the training data, create a recipe predicting the outcome variable, age, #with all other predictor variables. Note that you should not include rings to #predict age. 
+
+#Steps for your recipe:
+
+#dummy code any categorical predictors
+abalone_recipe <- recipe(age ~ ., data = train) %>% 
+  step_rm(rings) %>%
+  step_dummy(all_nominal_predictors()) %>%
+  step_interact(terms = ~ starts_with("type"):shucked_weight +
+                  longest_shell:diameter +
+                  shucked_weight:shell_weight) %>%
+  step_scale(all_numeric_predictors()) %>%
+  step_center(all_numeric_predictors())
+
+#You’ll need to investigate the tidymodels documentation to find the appropriate #step functions to use.
+```
+
+```{r question4}
+#Create and store a linear regression object using the "lm" engine.
+lm_model <- linear_reg() %>% 
+  set_engine("lm")
+```
+
+```{r question5, echo=FALSE}
+#Now:
+
+#set up an empty workflow,
+#add the model you created in Question 4, and
+#add the recipe that you created in Question 3.
+
+lm_wflow <- workflow() %>% 
+  add_model(lm_model) %>% 
+  add_recipe(abalone_recipe)
+```
+
+```{r question6}
+#Use your fit() object to predict the age of a hypothetical female abalone with longest_shell = 0.50, diameter = 0.10, height = 0.30, whole_weight = 4, shucked_weight = 1, viscera_weight = 2, shell_weight = 1.
+
+lm_fit <- fit(lm_wflow, train)
+
+gather_data <- data.frame(type = "F", longest_shell = 0.50, diameter = 0.10, 
+                          height = 0.30, whole_weight = 4, shucked_weight = 1, 
+                          viscera_weight = 2, shell_weight = 1)
+#rings doesn't exist
+#predict(lm_fit, new_data = gather_data %>% select(-rings))
+```
+
