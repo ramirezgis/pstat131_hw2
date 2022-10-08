@@ -22,6 +22,7 @@ Question 1:
 ages <- abalone %>% 
   mutate(age = rings + 1.5)
 hist(ages$age)
+ages
 ```
 
 
@@ -78,17 +79,47 @@ lm_model <- linear_reg() %>%
 lm_wflow <- workflow() %>% 
   add_model(lm_model) %>% 
   add_recipe(abalone_recipe)
+
+#testing stats
+lm_fit <- fit(lm_wflow, train)
+lm_fit %>%
+  extract_fit_parsnip() %>%
+  tidy()
+
+lm_fit
 ```
 
-```{r question6}
-#Use your fit() object to predict the age of a hypothetical female abalone with longest_shell = 0.50, diameter = 0.10, height = 0.30, whole_weight = 4, shucked_weight = 1, viscera_weight = 2, shell_weight = 1.
 
-lm_fit <- fit(lm_wflow, train)
+```{r question6}
+#Use your fit() object to predict the age
+
+#lm_fit <- fit(lm_wflow, train)
 
 gather_data <- data.frame(type = "F", longest_shell = 0.50, diameter = 0.10, 
                           height = 0.30, whole_weight = 4, shucked_weight = 1, 
-                          viscera_weight = 2, shell_weight = 1)
+                          viscera_weight = 2, shell_weight = 1, rings = 0)
+#check c(1:29)
 #rings doesn't exist
 predict(lm_fit, new_data = gather_data)
+```
+
+
+```{r question7}
+#Question 7
+#Now you want to assess your model’s performance. To do this, use the yardstick package:
+
+#Use predict() and bind_cols() to create a tibble of your model’s predicted values from the training data along with the actual observed ages (these are needed to assess your model’s performance).
+#Finally, apply your metric set to the tibble, report the results, and interpret the R2 value.
+
+multi_metric <- metric_set(rsq, rmse, mae)
+
+train_res <- predict(lm_fit, new_data = train %>% select(-age))
+
+train_res <- bind_cols(train_res, train %>% select(age))
+train_res %>% 
+  head()
+
+multi_metric(train_res, truth = age, 
+                estimate = .pred)
 ```
 
