@@ -14,26 +14,20 @@ abalone
 
 
 Question 1:
-```{r cars}
-#Your goal is to predict abalone age, which is calculated as the number of rings #plus 1.5. Notice there currently is no age variable in the data set. Add age to #the data set.
-
-#Assess and describe the distribution of age.
-
+```{r question1}
 ages <- abalone %>% 
   mutate(age = rings + 1.5)
-hist(ages$age)
+hist(ages$age, main = "Histogram of Abalone Ages", 
+     xlab = "Age")
 ages
 ```
 
 
-include explanation here
+In this histogram, we see that the distribution of age is mostly centered around 
+8 to 14 years old. There are very few abalone ages that are older than 15 and there are extremely older than 25 years old. The most common ages are between 10 and 12 years old as an unimodal, right-skewed distribution. 
 
 Question 2
 ```{r question2}
-#Split the abalone data into a training set and a testing set. Use stratified #sampling. You should decide on appropriate percentages for splitting the data.
-
-#Remember that you’ll need to set a seed at the beginning of the document to #reproduce your results.
-
 set.seed(1500)
 
 abalone_split <- initial_split(ages, prop = 0.80, 
@@ -45,12 +39,8 @@ test = testing(abalone_split)
 ```
 
 
+Question 3
 ```{r question3}
-#Using the training data, create a recipe predicting the outcome variable, age, #with all other predictor variables. Note that you should not include rings to #predict age. 
-
-#Steps for your recipe:
-
-#dummy code any categorical predictors
 abalone_recipe <- recipe(age ~ ., data = train) %>% 
   step_rm(rings) %>%
   step_dummy(all_nominal_predictors()) %>%
@@ -59,28 +49,27 @@ abalone_recipe <- recipe(age ~ ., data = train) %>%
                   shucked_weight:shell_weight) %>%
   step_scale(all_numeric_predictors()) %>%
   step_center(all_numeric_predictors())
-
-#You’ll need to investigate the tidymodels documentation to find the appropriate #step functions to use.
+abalone_recipe
 ```
 
+I shouldn't include rings to predict age since rings are directly related to age as we would just add 1.5 years to rings and we would automatically know the age 
+of the abalone.
+
+
+Question 4
 ```{r question4}
-#Create and store a linear regression object using the "lm" engine.
 lm_model <- linear_reg() %>% 
   set_engine("lm")
+lm_model
 ```
 
-```{r question5, echo=FALSE}
-#Now:
 
-#set up an empty workflow,
-#add the model you created in Question 4, and
-#add the recipe that you created in Question 3.
-
+Question 5
+```{r question5}
 lm_wflow <- workflow() %>% 
   add_model(lm_model) %>% 
   add_recipe(abalone_recipe)
 
-#testing stats
 lm_fit <- fit(lm_wflow, train)
 lm_fit %>%
   extract_fit_parsnip() %>%
@@ -90,36 +79,32 @@ lm_fit
 ```
 
 
+Question 6
 ```{r question6}
-#Use your fit() object to predict the age
-
-#lm_fit <- fit(lm_wflow, train)
-
 gather_data <- data.frame(type = "F", longest_shell = 0.50, diameter = 0.10, 
                           height = 0.30, whole_weight = 4, shucked_weight = 1, 
                           viscera_weight = 2, shell_weight = 1, rings = 0)
-#check c(1:29)
-#rings doesn't exist
+
 predict(lm_fit, new_data = gather_data)
 ```
 
 
+Based on the information given, the abalone age is predicted to be around 24 years old. 
+
+
+Question 7
 ```{r question7}
-#Question 7
-#Now you want to assess your model’s performance. To do this, use the yardstick package:
-
-#Use predict() and bind_cols() to create a tibble of your model’s predicted values from the training data along with the actual observed ages (these are needed to assess your model’s performance).
-#Finally, apply your metric set to the tibble, report the results, and interpret the R2 value.
-
 multi_metric <- metric_set(rsq, rmse, mae)
 
-train_res <- predict(lm_fit, new_data = train %>% select(-age))
+train_res <- predict(lm_fit, new_data = train %>% 
+                       select(-age))
 
-train_res <- bind_cols(train_res, train %>% select(age))
-train_res %>% 
-  head()
+train_res <- bind_cols(train_res, train %>% 
+                         select(age))
 
 multi_metric(train_res, truth = age, 
                 estimate = .pred)
 ```
 
+Based on the results, we see that the R squared value is around 0.551. This 
+means that there is a correlation (although not an extremely strong one, but still a strong one) between our predicted values and response values. 
