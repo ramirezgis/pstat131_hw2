@@ -1,0 +1,419 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={hw2},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{hw2}
+\author{}
+\date{\vspace{-2.5em}2022-10-06}
+
+\begin{document}
+\maketitle
+
+Set up:
+
+\begin{verbatim}
+## -- Attaching packages -------------------------------------- tidymodels 1.0.0 --
+\end{verbatim}
+
+\begin{verbatim}
+## v broom        1.0.1      v recipes      1.0.1 
+## v dials        1.0.0      v rsample      1.1.0 
+## v dplyr        1.0.10     v tibble       3.1.8 
+## v ggplot2      3.3.6      v tidyr        1.2.1 
+## v infer        1.0.3      v tune         1.0.0 
+## v modeldata    1.0.1      v workflows    1.1.0 
+## v parsnip      1.0.1      v workflowsets 1.0.0 
+## v purrr        0.3.4      v yardstick    1.1.0
+\end{verbatim}
+
+\begin{verbatim}
+## -- Conflicts ----------------------------------------- tidymodels_conflicts() --
+## x purrr::discard() masks scales::discard()
+## x dplyr::filter()  masks stats::filter()
+## x dplyr::lag()     masks stats::lag()
+## x recipes::step()  masks stats::step()
+## * Use suppressPackageStartupMessages() to eliminate package startup messages
+\end{verbatim}
+
+\begin{verbatim}
+## -- Attaching packages --------------------------------------- tidyverse 1.3.2 --
+## v readr   2.1.2     v forcats 0.5.2
+## v stringr 1.4.1     
+## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
+## x readr::col_factor() masks scales::col_factor()
+## x purrr::discard()    masks scales::discard()
+## x dplyr::filter()     masks stats::filter()
+## x stringr::fixed()    masks recipes::fixed()
+## x dplyr::lag()        masks stats::lag()
+## x readr::spec()       masks yardstick::spec()
+## Rows: 4177 Columns: 9
+## -- Column specification --------------------------------------------------------
+## Delimiter: ","
+## chr (1): type
+## dbl (8): longest_shell, diameter, height, whole_weight, shucked_weight, visc...
+## 
+## i Use `spec()` to retrieve the full column specification for this data.
+## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
+\end{verbatim}
+
+\begin{verbatim}
+## # A tibble: 4,177 x 9
+##    type  longest_shell diameter height whole_wei~1 shuck~2 visce~3 shell~4 rings
+##    <chr>         <dbl>    <dbl>  <dbl>       <dbl>   <dbl>   <dbl>   <dbl> <dbl>
+##  1 M             0.455    0.365  0.095       0.514  0.224   0.101    0.15     15
+##  2 M             0.35     0.265  0.09        0.226  0.0995  0.0485   0.07      7
+##  3 F             0.53     0.42   0.135       0.677  0.256   0.142    0.21      9
+##  4 M             0.44     0.365  0.125       0.516  0.216   0.114    0.155    10
+##  5 I             0.33     0.255  0.08        0.205  0.0895  0.0395   0.055     7
+##  6 I             0.425    0.3    0.095       0.352  0.141   0.0775   0.12      8
+##  7 F             0.53     0.415  0.15        0.778  0.237   0.142    0.33     20
+##  8 F             0.545    0.425  0.125       0.768  0.294   0.150    0.26     16
+##  9 M             0.475    0.37   0.125       0.509  0.216   0.112    0.165     9
+## 10 F             0.55     0.44   0.15        0.894  0.314   0.151    0.32     19
+## # ... with 4,167 more rows, and abbreviated variable names 1: whole_weight,
+## #   2: shucked_weight, 3: viscera_weight, 4: shell_weight
+\end{verbatim}
+
+Question 1:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ages }\OtherTok{\textless{}{-}}\NormalTok{ abalone }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{age =}\NormalTok{ rings }\SpecialCharTok{+} \FloatTok{1.5}\NormalTok{)}
+\FunctionTok{hist}\NormalTok{(ages}\SpecialCharTok{$}\NormalTok{age, }\AttributeTok{main =} \StringTok{"Histogram of Abalone Ages"}\NormalTok{, }
+     \AttributeTok{xlab =} \StringTok{"Age"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{hw2_files/figure-latex/question1-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ages}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 4,177 x 10
+##    type  longest_sh~1 diame~2 height whole~3 shuck~4 visce~5 shell~6 rings   age
+##    <chr>        <dbl>   <dbl>  <dbl>   <dbl>   <dbl>   <dbl>   <dbl> <dbl> <dbl>
+##  1 M            0.455   0.365  0.095   0.514  0.224   0.101    0.15     15  16.5
+##  2 M            0.35    0.265  0.09    0.226  0.0995  0.0485   0.07      7   8.5
+##  3 F            0.53    0.42   0.135   0.677  0.256   0.142    0.21      9  10.5
+##  4 M            0.44    0.365  0.125   0.516  0.216   0.114    0.155    10  11.5
+##  5 I            0.33    0.255  0.08    0.205  0.0895  0.0395   0.055     7   8.5
+##  6 I            0.425   0.3    0.095   0.352  0.141   0.0775   0.12      8   9.5
+##  7 F            0.53    0.415  0.15    0.778  0.237   0.142    0.33     20  21.5
+##  8 F            0.545   0.425  0.125   0.768  0.294   0.150    0.26     16  17.5
+##  9 M            0.475   0.37   0.125   0.509  0.216   0.112    0.165     9  10.5
+## 10 F            0.55    0.44   0.15    0.894  0.314   0.151    0.32     19  20.5
+## # ... with 4,167 more rows, and abbreviated variable names 1: longest_shell,
+## #   2: diameter, 3: whole_weight, 4: shucked_weight, 5: viscera_weight,
+## #   6: shell_weight
+\end{verbatim}
+
+In this histogram, we see that the distribution of age is mostly
+centered around 8 to 14 years old. There are very few abalone ages that
+are older than 15 and there are extremely older than 25 years old. The
+most common ages are between 10 and 12 years old as an unimodal,
+right-skewed distribution.
+
+Question 2
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{1500}\NormalTok{)}
+
+\NormalTok{abalone\_split }\OtherTok{\textless{}{-}} \FunctionTok{initial\_split}\NormalTok{(ages, }\AttributeTok{prop =} \FloatTok{0.80}\NormalTok{, }
+                               \AttributeTok{strata =}\NormalTok{ age)}
+
+\NormalTok{train }\OtherTok{=} \FunctionTok{training}\NormalTok{(abalone\_split)}
+\NormalTok{test }\OtherTok{=} \FunctionTok{testing}\NormalTok{(abalone\_split)}
+\end{Highlighting}
+\end{Shaded}
+
+Question 3
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{abalone\_recipe }\OtherTok{\textless{}{-}} \FunctionTok{recipe}\NormalTok{(age }\SpecialCharTok{\textasciitilde{}}\NormalTok{ ., }\AttributeTok{data =}\NormalTok{ train) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{step\_rm}\NormalTok{(rings) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{step\_dummy}\NormalTok{(}\FunctionTok{all\_nominal\_predictors}\NormalTok{()) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{step\_interact}\NormalTok{(}\AttributeTok{terms =} \SpecialCharTok{\textasciitilde{}} \FunctionTok{starts\_with}\NormalTok{(}\StringTok{"type"}\NormalTok{)}\SpecialCharTok{:}\NormalTok{shucked\_weight }\SpecialCharTok{+}
+\NormalTok{                  longest\_shell}\SpecialCharTok{:}\NormalTok{diameter }\SpecialCharTok{+}
+\NormalTok{                  shucked\_weight}\SpecialCharTok{:}\NormalTok{shell\_weight) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{step\_scale}\NormalTok{(}\FunctionTok{all\_numeric\_predictors}\NormalTok{()) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{step\_center}\NormalTok{(}\FunctionTok{all\_numeric\_predictors}\NormalTok{())}
+\NormalTok{abalone\_recipe}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Recipe
+## 
+## Inputs:
+## 
+##       role #variables
+##    outcome          1
+##  predictor          9
+## 
+## Operations:
+## 
+## Variables removed rings
+## Dummy variables from all_nominal_predictors()
+## Interactions with starts_with("type"):shucked_weight + longest_shell...
+## Scaling for all_numeric_predictors()
+## Centering for all_numeric_predictors()
+\end{verbatim}
+
+I shouldn't include rings to predict age since rings are directly
+related to age as we would just add 1.5 years to rings and we would
+automatically know the age of the abalone.
+
+Question 4
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lm\_model }\OtherTok{\textless{}{-}} \FunctionTok{linear\_reg}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{set\_engine}\NormalTok{(}\StringTok{"lm"}\NormalTok{)}
+\NormalTok{lm\_model}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Linear Regression Model Specification (regression)
+## 
+## Computational engine: lm
+\end{verbatim}
+
+Question 5
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lm\_wflow }\OtherTok{\textless{}{-}} \FunctionTok{workflow}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{add\_model}\NormalTok{(lm\_model) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{add\_recipe}\NormalTok{(abalone\_recipe)}
+
+\NormalTok{lm\_fit }\OtherTok{\textless{}{-}} \FunctionTok{fit}\NormalTok{(lm\_wflow, train)}
+\NormalTok{lm\_fit }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{extract\_fit\_parsnip}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{tidy}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 14 x 5
+##    term                            estimate std.error  statistic  p.value
+##    <chr>                              <dbl>     <dbl>      <dbl>    <dbl>
+##  1 (Intercept)                   11.5          0.0373 307.       0       
+##  2 longest_shell                  0.578        0.283    2.04     4.12e- 2
+##  3 diameter                       2.20         0.307    7.17     9.43e-13
+##  4 height                         0.207        0.0686   3.02     2.54e- 3
+##  5 whole_weight                   5.02         0.388   12.9      2.51e-37
+##  6 shucked_weight                -4.44         0.253  -17.5      7.22e-66
+##  7 viscera_weight                -0.914        0.155   -5.89     4.34e- 9
+##  8 shell_weight                   1.52         0.212    7.18     8.45e-13
+##  9 type_I                        -0.951        0.117   -8.16     4.84e-16
+## 10 type_M                        -0.283        0.105   -2.70     6.97e- 3
+## 11 type_I_x_shucked_weight        0.531        0.0882   6.02     1.90e- 9
+## 12 type_M_x_shucked_weight        0.294        0.112    2.64     8.41e- 3
+## 13 longest_shell_x_diameter      -2.92         0.398   -7.34     2.61e-13
+## 14 shucked_weight_x_shell_weight  0.0000418    0.204    0.000205 1.00e+ 0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lm\_fit}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## == Workflow [trained] ==========================================================
+## Preprocessor: Recipe
+## Model: linear_reg()
+## 
+## -- Preprocessor ----------------------------------------------------------------
+## 5 Recipe Steps
+## 
+## * step_rm()
+## * step_dummy()
+## * step_interact()
+## * step_scale()
+## * step_center()
+## 
+## -- Model -----------------------------------------------------------------------
+## 
+## Call:
+## stats::lm(formula = ..y ~ ., data = data)
+## 
+## Coefficients:
+##                   (Intercept)                  longest_shell  
+##                     1.145e+01                      5.779e-01  
+##                      diameter                         height  
+##                     2.204e+00                      2.071e-01  
+##                  whole_weight                 shucked_weight  
+##                     5.020e+00                     -4.442e+00  
+##                viscera_weight                   shell_weight  
+##                    -9.142e-01                      1.524e+00  
+##                        type_I                         type_M  
+##                    -9.512e-01                     -2.832e-01  
+##       type_I_x_shucked_weight        type_M_x_shucked_weight  
+##                     5.310e-01                      2.942e-01  
+##      longest_shell_x_diameter  shucked_weight_x_shell_weight  
+##                    -2.920e+00                      4.176e-05
+\end{verbatim}
+
+Question 6
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gather\_data }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{type =} \StringTok{"F"}\NormalTok{, }\AttributeTok{longest\_shell =} \FloatTok{0.50}\NormalTok{, }\AttributeTok{diameter =} \FloatTok{0.10}\NormalTok{, }
+                          \AttributeTok{height =} \FloatTok{0.30}\NormalTok{, }\AttributeTok{whole\_weight =} \DecValTok{4}\NormalTok{, }\AttributeTok{shucked\_weight =} \DecValTok{1}\NormalTok{, }
+                          \AttributeTok{viscera\_weight =} \DecValTok{2}\NormalTok{, }\AttributeTok{shell\_weight =} \DecValTok{1}\NormalTok{, }\AttributeTok{rings =} \DecValTok{0}\NormalTok{)}
+
+\FunctionTok{predict}\NormalTok{(lm\_fit, }\AttributeTok{new\_data =}\NormalTok{ gather\_data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 1 x 1
+##   .pred
+##   <dbl>
+## 1  24.0
+\end{verbatim}
+
+Based on the information given, the abalone age is predicted to be
+around 24 years old.
+
+Question 7
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{multi\_metric }\OtherTok{\textless{}{-}} \FunctionTok{metric\_set}\NormalTok{(rsq, rmse, mae)}
+
+\NormalTok{train\_res }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(lm\_fit, }\AttributeTok{new\_data =}\NormalTok{ train }\SpecialCharTok{\%\textgreater{}\%} 
+                       \FunctionTok{select}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{age))}
+
+\NormalTok{train\_res }\OtherTok{\textless{}{-}} \FunctionTok{bind\_cols}\NormalTok{(train\_res, train }\SpecialCharTok{\%\textgreater{}\%} 
+                         \FunctionTok{select}\NormalTok{(age))}
+
+\FunctionTok{multi\_metric}\NormalTok{(train\_res, }\AttributeTok{truth =}\NormalTok{ age, }
+                \AttributeTok{estimate =}\NormalTok{ .pred)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 3 x 3
+##   .metric .estimator .estimate
+##   <chr>   <chr>          <dbl>
+## 1 rsq     standard       0.551
+## 2 rmse    standard       2.15 
+## 3 mae     standard       1.55
+\end{verbatim}
+
+Based on the results, we see that the R squared value is around 0.551.
+This means that there is a correlation (although not an extremely strong
+one, but still a strong one) between our predicted values and response
+values.
+
+\end{document}
